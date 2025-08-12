@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaik Abdul Gaffar - Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+</head>
+<body>
+    <!-- Hamburger toggle and overlay (shown on mobile/tablet) -->
+    <button class="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="attachments/profile_image.jpg" alt="Shaik Abdul Gaffar">
+                    <div class="yellow-circle"></div>
+                </div>
+                <h2 class="name">Shaik Abdul Gaffar</h2>
+            </div>
+            
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/shaikabdulgaffar" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/shaikabdulgaffar" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/shaik_ag" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- removed sidebar copyright -->
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <section id="home" class="section active">
+                <div class="hero-content">
+                    <h1 class="greeting">Hello!</h1>
+                    <h2 class="intro">I'm Shaik<br>Abdul Gaffar</h2>
+                    <h3 class="tagline" id="role-rotator">I'm a Tech Enthusiast</h3>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">Let's Connect</button>
+                        <button class="btn btn-secondary">My Works</button>
+                    </div>
+                    
+                    <div class="bottom-social-links">
+                        <a href="https://linkedin.com/in/shaikabdulgaffar" class="bottom-social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/shaikabdulgaffar" class="bottom-social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/shaik_ag" class="bottom-social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://leetcode.com/u/shaikabdulgaffar/" class="bottom-social-link" target="_blank"><img src="attachments/leetcode.png" alt="LeetCode" style="width:30px;height:30px;"></a>
+                        <a href="https://www.hackerrank.com/profile/shaikabdulgaffar" class="bottom-social-link" target="_blank"><img src="attachments/hackerrank.png" alt="HackerRank" style="width:30px;height:30px;"></a>
+                        <a href="https://unstop.com/u/shaikgaf27939" class="bottom-social-link" target="_blank"><img src="attachments/unstop.png" alt="Unstop" style="width:30px;height:30px;"></a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="section">
+                <div class="about-content new-about">
+                    <div class="about-left">
+                    </div>
+                    <div class="about-right">
+                        <h2 class="section-title">About Me</h2>
+                        <div class="title-underline"></div>
+                        <p class="about-description">
+                            Hi, I'm Abdul Gaffar. I love building clean, efficient web applications and solving real-world problems. With an MCA degree and hands-on experience as a Python Developer Intern, I specialize in Django, Python, JavaScript, HTML, CSS, and SQL. I’m passionate about learning new technologies and collaborating on exciting projects.
+                        </p>
+                        <div class="about-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">Shaik Abdul Gaffar</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Age:</span>
+                                <span class="info-value">22</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+91 9581590472</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">shaikabdulgaffar01@gmail.com</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Address:</span>
+                                <span class="info-value">Kadapa, Andhra Pradesh</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Freelance:</span>
+                                <span class="info-value available">Available</span>
+                            </div>
+                        </div>
+                        <div class="about-stats-row">
+                            <div class="stat-box"><span>1+</span><small>Internships</small></div>
+                            <div class="stat-box"><span>15+</span><small>Technologies</small></div>
+                            <div class="stat-box"><span>8</span><small>Projects</small></div>
+                            <div class="stat-box"><span>100%</span><small>Dedication</small></div>
+                        </div>
+                        <a href="#" class="btn btn-cv">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <div class="skills-content">
+                    <div class="skills-header">
+                        <h2 class="section-title">My Skills</h2>
+                        <div class="title-underline"></div>
+                        <p class="skills-description">Here are the technologies and tools I work with</p>
+                    </div>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-python-plain"></i>
+                            </div>
+                            <span class="skill-name">Python</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-django-plain"></i>
+                            </div>
+                            <span class="skill-name">Django</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-html5-plain"></i>
+                            </div>
+                            <span class="skill-name">HTML5</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-css3-plain"></i>
+                            </div>
+                            <span class="skill-name">CSS3</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-javascript-plain"></i>
+                            </div>
+                            <span class="skill-name">JavaScript</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-postgresql-plain"></i>
+                            </div>
+                            <span class="skill-name">PostgreSQL</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-mongodb-plain"></i>
+                            </div>
+                            <span class="skill-name">MongoDB</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-sqlite-plain"></i>
+                            </div>
+                            <span class="skill-name">SQLite</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <span class="skill-name">PowerBI</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-file-excel"></i>
+                            </div>
+                            <span class="skill-name">Excel</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-windows8-original"></i>
+                            </div>
+                            <span class="skill-name">Windows</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-ubuntu-plain"></i>
+                            </div>
+                            <span class="skill-name">Linux</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-github-original"></i>
+                            </div>
+                            <span class="skill-name">GitHub</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-vscode-plain"></i>
+                            </div>
+                            <span class="skill-name">VS Code</span>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="devicon-docker-plain"></i>
+                            </div>
+                            <span class="skill-name">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <div class="projects-content">
+                    <div class="projects-header">
+                        <h2 class="section-title">My Projects</h2>
+                        <div class="title-underline"></div>
+                        <p class="projects-description">Here are some of my recent projects showcasing my skills and expertise</p>
+                    </div>
+                    
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/portfolio.png" alt="Personal Portfolio">
+                            <div class="project-content">
+                                <h3 class="project-title">Personal Portfolio</h3>
+                                <p class="project-description">A modern, responsive personal portfolio website showcasing my skills, services, and projects. Built with HTML, CSS, and JavaScript.</p>
+                                <a href="https://github.com/shaikabdulgaffar/Portfolio" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments//andhraspices.png" alt="Andhra Spices">
+                            <div class="project-content">
+                                <h3 class="project-title">Andhra Spices</h3>
+                                <p class="project-description">A complete food ordering web application for restaurants with menu browsing, cart, order and login/signup. Built with Django, HTML, CSS, JS.</p>
+                                <a href="https://github.com/shaikabdulgaffar/AndhraSpices" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/doctorsaathi.png" alt="Doctor Saathi">
+                            <div class="project-content">
+                                <h3 class="project-title">Doctor Saathi</h3>
+                                <p class="project-description">An intelligent web application that predicts possible diseases based on user's symptoms using ML. Built with Python, Django, HTML, CSS.</p>
+                                <a href="https://github.com/shaikabdulgaffar/DoctorSaathi" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/prompt2query.png" alt="Prompt2Query">
+                            <div class="project-content">
+                                <h3 class="project-title">Prompt2Query</h3>
+                                <p class="project-description">Converts natural language prompts into SQL queries using AI. Simplifies database querying. Built with Python, OpenAI API, Django.</p>
+                                <a href="https://github.com/shaikabdulgaffar/Prompt2Query" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/clyai.png" alt="CLY.AI Assistant">
+                            <div class="project-content">
+                                <h3 class="project-title">CLY.AI Assistant</h3>
+                                <p class="project-description">AI-powered chatbot assistant for answering user queries and providing information. Built with Python, Django, integrated LLM APIs.</p>
+                                <a href="https://github.com/shaikabdulgaffar/CLYAI-Assistant" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/lyricsfinder.png" alt="Lyrics Finder">
+                            <div class="project-content">
+                                <h3 class="project-title">Lyrics Finder</h3>
+                                <p class="project-description">Web app to search and display song lyrics by artist or title. Built with Django, HTML, CSS, and external lyrics APIs.</p>
+                                <a href="https://github.com/shaikabdulgaffar/LyricsFinder" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/oncodeeditor.png" alt="OnCodeEditor">
+                            <div class="project-content">
+                                <h3 class="project-title">OnCodeEditor</h3>
+                                <p class="project-description">Browser-based code editor supporting multiple languages and instant execution. Built using HTML, CSS and JavaScript (Pydiode).</p>
+                                <a href="https://github.com/shaikabdulgaffar/OnCodeEditor" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img class="project-thumb" src="attachments/genqr.png" alt="GenQR">
+                            <div class="project-content">
+                                <h3 class="project-title">GenQR</h3>
+                                <p class="project-description">Generate QR codes from URLs easily using Python (Flask), HTML, CSS and JS. Clean interface and instant download.</p>
+                                <a href="https://github.com/shaikabdulgaffar/GenQR" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="contact-content">
+                    <div class="contact-header">
+                        <h2 class="section-title">Get In Touch</h2>
+                        <div class="title-underline gradient"></div>
+                        <p class="contact-description">
+                            Let's discuss your project or just say hello! I'm always open to new opportunities.
+                        </p>
+                    </div>
+
+                    <div class="contact-wrapper">
+                        <!-- Left: Contact Methods -->
+                        <div class="contact-methods">
+                            <a class="method-card" href="https://www.linkedin.com/in/shaikabdulgaffar" target="_blank" rel="noopener">
+                                <div class="icon-circle linkedin"><i class="fab fa-linkedin-in"></i></div>
+                                <div class="method-text">
+                                    <h4>LinkedIn</h4>
+                                    <p>Connect on LinkedIn: linkedin.com/in/shaikabdulgaffar</p>
+                                </div>
+                            </a>
+
+                            <a class="method-card" href="https://github.com/shaikabdulgaffar" target="_blank" rel="noopener">
+                                <div class="icon-circle github"><i class="fab fa-github"></i></div>
+                                <div class="method-text">
+                                    <h4>GitHub</h4>
+                                    <p>View my GitHub: github.com/shaikabdulgaffar</p>
+                                </div>
+                            </a>
+
+                            <a class="method-card" href="mailto:shaikabdulgaffar01@gmail.com">
+                                <div class="icon-circle email"><i class="fas fa-envelope"></i></div>
+                                <div class="method-text">
+                                    <h4>Email</h4>
+                                    <p>Email me directly: shaikabdulgaffar01@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <a class="method-card" href="tel:+919581590472">
+                                <div class="icon-circle phone"><i class="fas fa-phone"></i></div>
+                                <div class="method-text">
+                                    <h4>Phone</h4>
+                                    <p>Call me: +91 9581590472</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Right: Contact Form -->
+                        <div class="contact-form-card">
+                            <form class="contact-form" action="#" method="post">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Your Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Your Message</label>
+                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn contact-submit">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New footer below contact -->
+            <footer class="site-footer">
+                <small>&copy; 2025 Shaik Abdul Gaffar. All rights reserved.</small>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
