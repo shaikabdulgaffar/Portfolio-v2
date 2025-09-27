@@ -228,8 +228,8 @@ html {
 }
 
 :root {
-  /* one place to control hero text size across breakpoints */
-  --hero-size: clamp(2.4rem, 6vw, 64px);
+  /* Increased hero text size for better visibility */
+  --hero-size: clamp(3.2rem, 8vw, 80px); /* Increased from 64px */
 }
 
 @media (max-width: 768px) {
@@ -243,21 +243,39 @@ html {
   }
 
   /* Typographic scale */
-  .greeting { font-size: clamp(1rem, 4.5vw, 1.25rem); }
-  :root { --hero-size: clamp(1.4rem, 6.5vw, 2rem); } /* used by .intro */
-  .tagline { font-size: clamp(1rem, 4.8vw, 1.35rem); }
-
+  .greeting { 
+    font-size: clamp(1.5rem, 6vw, 2rem) !important; /* Increased mobile size */
+  }
+  :root { 
+    --hero-size: clamp(2rem, 8vw, 2.8rem) !important; /* Increased mobile hero size */
+  }
+  .tagline { 
+    font-size: clamp(1.4rem, 6.5vw, 2rem) !important; /* Increased mobile tagline */
+  }
+  
   /* Buttons/social size */
   .cta-buttons { gap: 12px; }
-  .cta-buttons .btn { padding: 10px 18px; font-size: 14px; border-radius: 20px; }
-  .bottom-social-link { width: 40px; height: 40px; font-size: 16px; }
+  .cta-buttons .btn { 
+    padding: 12px 24px; /* Increased from 10px 18px */
+    font-size: 16px; /* Increased from 14px */
+    border-radius: 25px; 
+  }
 }
 
 @media (max-width: 480px) {
-  .greeting { font-size: clamp(0.95rem, 5vw, 1.15rem); }
-  :root { --hero-size: clamp(1.25rem, 7vw, 1.75rem); }
-  .tagline { font-size: clamp(0.95rem, 5.5vw, 1.2rem); }
-  .cta-buttons .btn { padding: 9px 16px; font-size: 13px; }
+  .greeting { 
+    font-size: clamp(1.2rem, 6.5vw, 1.6rem) !important; /* Better small screen size */
+  }
+  :root { 
+    --hero-size: clamp(1.6rem, 8.5vw, 2.2rem) !important; /* Better small screen hero */
+  }
+  .tagline { 
+    font-size: clamp(1.2rem, 7vw, 1.8rem) !important; /* Better small screen tagline */
+  }
+  .cta-buttons .btn { 
+    padding: 11px 20px; /* Slightly increased */
+    font-size: 15px; /* Increased from 13px */
+  }
 }
 
 .hero-content {
@@ -317,10 +335,10 @@ html {
 }
 
 .btn {
-    padding: 12px 30px; /* Slightly reduced padding */
+    padding: 16px 40px; /* Increased from 12px 30px */
     border: none;
-    border-radius: 25px;
-    font-size: 16px; /* Reduced from 18px */
+    border-radius: 30px; /* Slightly more rounded */
+    font-size: 18px; /* Increased from 16px */
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -972,10 +990,41 @@ html {
 }
 
 .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch; /* ensures columns can stretch equally */
+}
+
+/* Desktop/laptop or big screens only */
+@media (min-width: 1200px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr 1fr; /* Left: methods, Right: form */
+  }
+
+  /* Make both columns equal height and give methods a card container */
+  .contact-methods {
     display: flex;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    background: #fff;
+    padding: 1.4rem 1.5rem 1.7rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px -6px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+  }
+
+  .method-card {
+    width: 100%;
+  }
+
+  .contact-form-card {
+    display: flex;
+    flex-direction: column;
     align-items: stretch;
-    flex-wrap: wrap;
+    height: 100%;
+  }
 }
 
 .contact-methods {
@@ -1018,6 +1067,7 @@ html {
 .icon-circle.github { background:#111; }
 .icon-circle.email { background:#ec4899; }
 .icon-circle.phone { background:#0ea5e9; }
+.icon-circle.twitter { background:#1da1f2; } /* Twitter icon color */
 
 .method-text h4 {
     margin: 0 0 .35rem;
@@ -1130,6 +1180,94 @@ html {
     }
 }
 
+/* Mobile fix: keep label and value on one row in About info grid */
+@media (max-width: 480px) {
+  .about-info-grid {
+    grid-template-columns: 1fr; /* one item per row */
+  }
+  .about-info-grid .info-item {
+    flex-direction: row !important;          /* override earlier column */
+    align-items: center;
+    justify-content: space-between;
+    text-align: left !important;
+    gap: 8px;
+  }
+  .about-info-grid .info-label {
+    flex: 0 0 42%;                           /* consistent left column */
+    white-space: nowrap;
+  }
+  .about-info-grid .info-value {
+    flex: 1 1 auto;
+    text-align: right !important;            /* right-align values */
+    max-width: none !important;
+    white-space: nowrap;                     /* avoid wrap */
+    overflow: hidden;                        /* handle long text (email) */
+    text-overflow: ellipsis;
+  }
+}
+
+/* Mobile: show complete values in About info grid */
+@media (max-width: 480px) {
+  /* reduce side padding to gain width */
+  .about-right {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .about-info-grid .info-item {
+    padding: 10px 8px !important;
+  }
+
+  /* slightly narrower label column */
+  .about-info-grid .info-label {
+    flex: 0 0 34% !important;
+    white-space: nowrap;
+  }
+
+  /* let long values wrap instead of ellipsis */
+  .about-info-grid .info-value {
+    flex: 1 1 66% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere;        /* handles long emails/addresses */
+    word-break: break-word;         /* fallback */
+    text-align: right;              /* keep alignment like other rows */
+  }
+}
+
+/* Mobile hero photo (hidden on large screens) */
+.hero-mobile-photo {
+  display: none;
+}
+
+.hero-mobile-photo img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+/* Show only when sidebar is removed */
+@media (max-width: 1024px) {
+  .hero-mobile-photo {
+    display: block;
+    animation: fadeInUp .7s ease;
+    margin-bottom: 4px;
+  }
+}
+
+/* Slightly smaller on very small phones */
+@media (max-width: 430px) {
+  .hero-mobile-photo img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 /* Custom Scrollbar for Main Content */
 .main-content::-webkit-scrollbar {
     width: 8px;
@@ -1221,7 +1359,7 @@ html {
     /* 3 skill cards per row on mobile */
     .skills-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+        gap: 12px;
     }
     .skill-item {
         padding: 16px 12px;
@@ -1244,290 +1382,338 @@ html {
     }
 }
 
-/* === Contact Section Fit-to-Viewport Overrides === */
-#contact {
-    padding: 2rem 1.5rem;
+/* === Home hero upsize (mobile + tablet) v2 === */
+@media (max-width: 1024px) {
+  #home .hero-content { max-width: 820px; }
+
+  /* Intro (name) */
+  :root { --hero-size: clamp(3rem, 9.5vw, 4rem) !important; }
+
+  #home .greeting { 
+    font-size: clamp(2.2rem, 7.2vw, 3.6rem) !important; 
+  }
+  #home .tagline { 
+    font-size: clamp(1.8rem, 6.5vw, 3rem) !important; 
+  }
+
+  /* Buttons bigger and wider (full width on mobile/tablet) */
+  #home .cta-buttons .btn {
+    width: 100%;
+    padding: 16px 34px !important;
+    font-size: 18.5px !important;
+    border-radius: 30px;
+  }
 }
 
-#contact .contact-header {
-    margin-bottom: 1.5rem;
+@media (max-width: 480px) {
+  :root { --hero-size: clamp(2.4rem, 11vw, 3.2rem) !important; }
+  #home .greeting { font-size: clamp(2rem, 8.8vw, 2.8rem) !important; }
+  #home .tagline  { font-size: clamp(1.5rem, 8vw, 2.2rem) !important; }
+
+  #home .cta-buttons .btn {
+    padding: 15px 28px !important;
+    font-size: 17.5px !important;
+  }
 }
 
-#contact .section-title {
-    font-size: clamp(1.9rem, 3vw, 2.4rem);
+/* === PATCH: Responsive / Accessibility / Layout Fixes === */
+
+/* Allow natural page scroll (we lock body only when sidebar drawer is open) */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-#contact .contact-description {
-    margin-top: .6rem;
-    font-size: .9rem;
+/* Fix incorrect clamp (was clamp(3.2rem, 5vw, 6px)) causing tiny heading */
+.greeting {
+  font-size: clamp(1.6rem, 4.5vw, 3rem) !important;
+  line-height: 1.1;
 }
 
-.contact-wrapper {
-    display: flex;
-    gap: 1.5rem;
-    align-items: stretch;
-    flex-wrap: wrap;
-}
-
-.contact-methods {
-    gap: 1rem;
-}
-
-.method-card {
-    padding: 1rem 1.1rem;
-}
-
-.icon-circle {
-    width: 46px;
-    height: 46px;
-    font-size: 1.05rem;
-}
-
-.contact-form-card {
-    padding: 1.4rem 1.5rem 1.7rem;
-}
-
-.contact-form {
-    gap: .8rem;
-}
-
-.contact-form label {
-    font-size: .78rem;
-    letter-spacing: .4px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: .65rem .85rem;
-    font-size: .85rem;
-}
-
-.contact-form textarea {
-    min-height: 110px;
-}
-
-.contact-submit {
-    padding: .8rem 1rem;
-    font-size: .85rem;
-}
-
-.sidebar-copyright {
-    margin-top: 16px;
-    text-align: center;
-}
-
-.sidebar-copyright small {
-    font-size: 10px; /* Decreased size */
-    color: #888;
-    letter-spacing: 0.5px;
-}
-
-@media (min-width: 901px) {
-    #contact .contact-content {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-    }
-}
-
-#contact.section {
-    overflow: hidden;
-}
-
-.hero-content {
-    gap: 18px;
-}
-
+/* Make rotating tagline scale fluidly & wrap on small screens */
 .tagline {
-    margin-bottom: 0 !important;
+  font-size: clamp(1.1rem, 4.2vw, 2.4rem) !important;
+  white-space: normal !important;
+  line-height: 1.15;
+  margin-bottom: 0 !important;
 }
 
-.tagline + .cta-buttons {
-    margin-top: 4px;
+/* Use dynamic viewport height to avoid mobile browser chrome cut-off */
+.main-content,
+.section {
+  min-height: 100dvh;
 }
 
-
-.hero-content .greeting,
-.hero-content .intro,
-.hero-content .tagline {
-    font-family: 'Montserrat', Arial, sans-serif;
-}
-
-.hero-content .intro { font-weight: 900; }
-
-.cta-buttons .btn {
-    padding: 18px 48px; 
-    font-size: 22px; 
-    border-radius: 32px;
-}
-
-/* New site footer (bottom of main content */
-.site-footer {
-    padding: 16px 24px;
-    text-align: center;
-    color: #666;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(6px);
-}
-
-.site-footer small {
-    font-size: 0.9rem;
-}
-
-/* Mobile tweak */
-@media (max-width: 768px) {
-    .site-footer { padding: 12px 16px; }
-}
-
-/* Avatar toggle button */
-.avatar-toggle {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    background: #fff;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,.18);
-    cursor: pointer;
-    z-index: 1100;
-    display: none; /* only visible on ≤1024px */
-}
-.avatar-toggle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Hamburger toggle button (mobile/tablet) */
+/* Off‑canvas sidebar pattern for <=1024px; restore hidden nav & show hamburger */
 .menu-toggle {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,0,0,.08);
-    background: #fff;
-    color: #222;
-    display: none; /* visible on ≤1024px */
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 0;
-    box-shadow: 0 6px 20px rgba(0,0,0,.12);
-    cursor: pointer;
-    z-index: 1100;
-}
-.menu-toggle i {
-    font-size: 20px;
-    line-height: 1;
+  display: none; /* default hidden on large screens */
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1101;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-/* Overlay behind the drawer (already present) */
+.menu-toggle:active {
+  transform: scale(.94);
+}
+
 .sidebar-overlay {
+  /* default desktop no overlay shown */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.sidebar-overlay.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Override the earlier rule that forced display:none !important */
+@media (max-width:1024px) {
+  .sidebar,
+  .menu-toggle,
+  .sidebar-overlay {
+    display: block !important;
+  }
+
+  .menu-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Off-canvas behavior */
+  .sidebar {
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.28);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .25s ease;
-    z-index: 950;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform .35s ease;
+    box-shadow: 4px 0 28px -8px rgba(0,0,0,0.25);
+    justify-content: flex-start;
+    padding-top: 70px;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(0,0,0,0.45);
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
 }
-.sidebar-overlay.show { opacity: 1; pointer-events: auto; }
 
-/* Prevent page scroll when drawer open */
-body.no-scroll { overflow: hidden !important; }
+/* Slightly relax hero scaling so content doesn't overflow short viewports */
+.hero-content {
+  transform: none !important;
+  padding-top: clamp(0.5rem, 2vh, 2rem);
+}
 
-/* Off-canvas sidebar for mobile/tablet */
+/* Improve grid wrapping on very narrow phones */
+@media (max-width:400px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px;
+  }
+}
+
+/* Prevent project cards from stretching too tall on narrow heights */
+.project-card {
+  backdrop-filter: blur(10px);
+}
+
+/* Ensure images never overflow (just in case) */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Avoid horizontal scroll if any inline-block/nowrap sneaks in */
+html, body {
+  max-width: 100%;
+  overscroll-behavior-y: contain;
+}
+
+/* Improve tap targets spacing on very small screens */
+@media (max-width:480px) {
+  .cta-buttons {
+    gap: 10px;
+  }
+  .cta-buttons .btn {
+    padding: 10px 18px;
+  }
+}
+
+/* When drawer open, prevent body scroll */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Slightly reduce large section padding on medium heights to prevent vertical overflow */
+@media (max-height:700px) and (min-width:769px) {
+  .section {
+    padding: 32px 48px;
+  }
+  #home {
+    padding-top: 24px !important;
+  }
+}
+
+/* Contact equal-height via spacing (no container) */
+@media (min-width: 1200px) {
+  /* Keep two columns and stretch them */
+  .contact-wrapper {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  /* Stretch both sides to the same height */
+  .contact-methods,
+  .contact-form-card {
+    height: 100%;
+    align-self: stretch;
+  }
+
+  /* Remove previously added container styling on methods */
+  .contact-methods {
+    background: transparent !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+
+    /* Distribute cards to fill the column height using spacing only */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* spreads items to match form height */
+    gap: clamp(12px, 2vh, 22px);
+  }
+}
+
+/* Footer alignment fix (align with section padding) */
+.site-footer {
+  max-width: 1300px;
+  margin: 16px auto 24px;
+  padding: 0 60px 24px; /* match .section horizontal padding */
+  text-align: center;
+  color: #666;
+}
+@media (max-width: 768px) {
+  .site-footer { padding: 0 20px 16px; }
+}
+
+/* Stack Home CTA buttons on mobile and tablet */
 @media (max-width: 1024px) {
-    .menu-toggle { display: flex; }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px;
-        height: 100vh;
-        transform: translateX(-100%);
-        transition: transform .3s ease;
-        z-index: 1000;
-        overflow-y: auto;
-        /* keep your existing sidebar visuals */
-    }
-    .sidebar.open { transform: translateX(0); }
-
-    .navigation { display: block !important; }
-
-    .container { flex-direction: column; height: auto; }
-    .main-content { margin-left: 0 !important; height: auto; overflow: visible; }
-}
-
-/* Hide fixed hamburger when drawer is open */
-body.no-scroll .menu-toggle {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Make sure legacy in-sidebar hamburger never shows on mobile/tablet */
-@media (max-width: 1024px) {
-    .mobile-menu-toggle { display: none !important; }
-    .navigation { display: block !important; }
-}
-
-@media (max-width: 1024px) {
-  /* About info: one line, label left, value right (overrides older stacking) */
-  .about-info .info-item,
-  .new-about .about-info-grid > div {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch; /* make buttons full width of container */
+    gap: 12px;
+  }
+  .cta-buttons .btn {
     width: 100%;
   }
-  .about-info .info-item:last-child,
-  .new-about .about-info-grid > div:last-child {
-    border-bottom: none;
-  }
+}
 
-  .about-info .info-label,
-  .new-about .about-info-grid > div > span:first-child {
-    white-space: nowrap;
-    margin-right: 8px;
-    font-weight: 600;
-    color: #222;
-  }
-  .about-info .info-value,
-  .new-about .about-info-grid > div > span:last-child {
-    flex: 1 1 auto;
-    min-width: 0;
-    text-align: right !important;
-  }
-  /* Add visual colon if missing in HTML */
-  .about-info .info-label::after,
-  .new-about .about-info-grid > div > span:first-child::after {
-    content: ':';
-    margin-left: 4px;
-  }
-
-  /* Stats: exactly two cards per row */
-  .about-stats,
+/* Mobile: show About stats in 2 rows (2x2) */
+@media (max-width: 480px) {
   .about-stats-row {
     display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 14px;
   }
-  .stat-item,
-  .stat-box {
+  .about-stats-row .stat-box {
     width: 100% !important;
-    min-width: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Mobile: give About-right full width and remove left column */
+@media (max-width: 480px) {
+  .new-about {
+    grid-template-columns: 1fr !important; /* single column */
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .about-left {
+    display: none !important; /* free up width */
+  }
+  .about-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important; /* more usable width */
+  }
+}
+
+/* Mobile: widen value column, avoid wrapping */
+@media (max-width: 480px) {
+  .about-right {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .about-info-grid .info-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 10px 6px !important; /* tighter padding -> more content room */
+  }
+
+  .about-info-grid .info-label {
+    flex: 0 0 26% !important;     /* narrower label */
+    white-space: nowrap;
+  }
+
+  .about-info-grid .info-value {
+    flex: 0 0 74% !important;     /* wider value */
+    white-space: nowrap !important;  /* keep on one line */
+    overflow: visible !important;    /* no ellipsis/cutoff */
+    text-overflow: clip !important;
+    text-align: right;
+  }
+}
+
+/* Home buttons: wider on mobile/tablet */
+@media (max-width: 1024px) {
+  #home .cta-buttons {
+    width: 100%;
+    max-width: 900px;
+    align-items: stretch;
+  }
+  #home .cta-buttons .btn {
+    display: block;
+    width: 100% !important;
+    min-width: 0;
+    padding: 18px 36px !important;
+    font-size: 19px !important;
+    border-radius: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  #home .cta-buttons .btn {
+    padding: 16px 32px !important;
+    font-size: 18px !important;
   }
 }

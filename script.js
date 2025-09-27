@@ -1,29 +1,10 @@
+const ENABLE_SCROLLING_ELEMENTS_ANIMATION = false;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Navigation functionality
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
     const mainContent = document.querySelector('.main-content');
-
-    // Avatar -> sidebar drawer toggle (mobile/tablet)
-    const sidebarEl = document.getElementById('sidebar');
-    const overlayEl = document.querySelector('.sidebar-overlay');
-    const menuBtn = document.querySelector('.menu-toggle');
-
-    function setSidebarOpen(open) {
-        if (!sidebarEl) return;
-        sidebarEl.classList.toggle('open', open);
-        document.body.classList.toggle('no-scroll', open);
-        overlayEl?.classList.toggle('show', open);
-        menuBtn?.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-
-    menuBtn?.addEventListener('click', () => {
-        setSidebarOpen(!sidebarEl.classList.contains('open'));
-    });
-    overlayEl?.addEventListener('click', () => setSidebarOpen(false));
-    navLinks.forEach(link => link.addEventListener('click', () => setSidebarOpen(false)));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setSidebarOpen(false); });
-    window.addEventListener('resize', () => { if (window.innerWidth > 1024) setSidebarOpen(false); });
 
     const useContainerScroll = () =>
         mainContent && (mainContent.scrollHeight - 1) > mainContent.clientHeight;
@@ -260,10 +241,12 @@ document.addEventListener('DOMContentLoaded', function() {
             element.style.transform = `translateY(${scrolled * speed}px)`;
         });
     };
-    if (useContainerScroll()) {
-        mainContent.addEventListener('scroll', parallaxHandler, { passive: true });
-    } else {
-        window.addEventListener('scroll', parallaxHandler, { passive: true });
+    if (ENABLE_SCROLLING_ELEMENTS_ANIMATION) {
+        if (useContainerScroll()) {
+            mainContent.addEventListener('scroll', parallaxHandler, { passive: true });
+        } else {
+            window.addEventListener('scroll', parallaxHandler, { passive: true });
+        }
     }
 
     // Intersection Observer for animations
@@ -273,20 +256,22 @@ document.addEventListener('DOMContentLoaded', function() {
         root: useContainerScroll() ? mainContent : null
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-                entry.target.classList.add('animate-in');
-                if (entry.target.id === 'skills') {
-                    setTimeout(() => { /* animateSkillBars if you add bars */ }, 300);
-                }
-            }
-        });
-    }, observerOptions);
+        if (ENABLE_SCROLLING_ELEMENTS_ANIMATION) {
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        entry.target.classList.add('animate-in');
+                        if (entry.target.id === 'skills') {
+                            setTimeout(() => { /* animateSkillBars if you add bars */ }, 300);
+                        }
+                    }
+                });
+            }, observerOptions);
 
-    sections.forEach(section => observer.observe(section));
-    document.querySelectorAll('.project-card, .skill-item').forEach(card => observer.observe(card));
+            sections.forEach(section => observer.observe(section));
+            document.querySelectorAll('.project-card, .skill-item').forEach(card => observer.observe(card));
+        }
 
     // CV Download functionality
     const cvButton = document.querySelector('.btn-cv');
@@ -553,8 +538,10 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Initialize floating elements
-createFloatingElements();
+// Initialize floating elements (disabled when scrolling elements animation is off)
+if (ENABLE_SCROLLING_ELEMENTS_ANIMATION) {
+    createFloatingElements();
+}
 
 // Role rotation animation
 (function () {
