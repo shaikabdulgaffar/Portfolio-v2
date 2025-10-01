@@ -1714,6 +1714,90 @@ body.no-scroll {
 @media (max-width: 480px) {
   #home .cta-buttons .btn {
     padding: 16px 32px !important;
-    font-size: 18px !important;
+    font-size: 20px !important;
+  }
+}
+
+/* FIX: Stabilize hero width on mobile so CTA buttons don't resize with rolling text */
+@media (max-width: 1024px) {
+  #home .hero-content {
+    flex: 0 0 100% !important;   /* fill row, no shrink-to-fit */
+    width: 100% !important;
+    max-width: none !important;
+  }
+  #home .tagline {
+    width: 100%;                 /* ensure it can't shrink the container */
+  }
+}
+
+/* FIX: Avoid animating width when layout reflows */
+.btn {
+  transition: transform .3s ease, box-shadow .3s ease, background-color .3s ease, color .3s ease !important;
+}
+
+
+@media (max-width: 480px) {
+  #home .cta-buttons .btn {
+    width: 80% !important;
+    max-width: 260px !important;
+    margin: 0 auto;
+    padding: 13px 18px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* Floating "Back to Top" Button */
+#backToTopBtn {
+  position: fixed;
+  right: 24px;
+  bottom: 32px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  box-shadow: 0 8px 24px rgba(245,87,108,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+
+#backToTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#backToTopBtn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: scale(1.08);
+}
+
+/* Responsive: smaller button on mobile */
+@media (max-width: 768px) {
+  #backToTopBtn {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    right: 16px;
+    bottom: 20px;
+    z-index: 10001; /* Above all other elements */
+  }
+}
+
+@media (max-width: 480px) {
+  #backToTopBtn {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    right: 14px;
+    bottom: 18px;
   }
 }

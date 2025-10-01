@@ -581,3 +581,63 @@ window.addEventListener('error', function(e) {
 window.addEventListener('unhandledrejection', function(e) {
     console.error('Unhandled Promise Rejection:', e.reason);
 });
+
+// Floating "Back to Top" Button functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (!backToTopBtn) return;
+
+  const mainContent = document.querySelector('.main-content');
+
+  function getScrollRoot() {
+    // main-content तभी root बने जब वो सच में scrollable हो
+    if (mainContent && (mainContent.scrollHeight - 1) > mainContent.clientHeight) {
+      const ov = getComputedStyle(mainContent).overflowY;
+      if (ov !== 'visible' && ov !== 'clip') return mainContent;
+    }
+    return window;
+  }
+
+  function getScrollY(root) {
+    return root === window ? window.scrollY : root.scrollTop;
+  }
+
+  function toggleBackToTopBtn() {
+    const root = boundRoot || window;
+    if (getScrollY(root) > 200) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  }
+
+  let boundRoot = null;
+  function bindScrollTarget() {
+    const newRoot = getScrollRoot();
+    if (boundRoot === newRoot) {
+      // फिर भी स्टेट अपडेट कर दें
+      toggleBackToTopBtn();
+      return;
+    }
+    if (boundRoot) {
+      (boundRoot === window ? window : boundRoot).removeEventListener('scroll', toggleBackToTopBtn);
+    }
+    (newRoot === window ? window : newRoot).addEventListener('scroll', toggleBackToTopBtn, { passive: true });
+    boundRoot = newRoot;
+    toggleBackToTopBtn();
+  }
+
+  backToTopBtn.addEventListener('click', function() {
+    const root = boundRoot || window;
+    if (root === window) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      root.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  // Initial bind + on resize/load rebind
+  bindScrollTarget();
+  window.addEventListener('resize', bindScrollTarget);
+  window.addEventListener('load', bindScrollTarget);
+});
