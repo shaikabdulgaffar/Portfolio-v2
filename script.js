@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function scrollToSection(id) {
         const target = document.getElementById(id);
-        if (!target) return;
+        if (!target) return;``
 
         if (useContainerScroll()) {
             mainContent.scrollTo({ top: target.offsetTop, behavior: 'smooth' });

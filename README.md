@@ -49,3 +49,27 @@ Portfolio-v2/
 │
 └── attachments/
 ```
+
+## How to Run This Project
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/shaikabdulgaffar/Portfolio-v2.git
+   cd Portfolio-v2
+   ```
+
+2. **Open the project folder:**
+   - You can use [Visual Studio Code](https://code.visualstudio.com/) or any code editor.
+
+3. **Start a local server (optional, for best experience):**
+   - **Using VS Code Live Server Extension:**
+     - Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension.
+     - Right-click `index.html` and select **"Open with Live Server"**.
+   - **Or use Python's built-in server:**
+     ```sh
+     python -m http.server
+     ```
+     Then open [http://localhost:8000](http://localhost:8000) in your browser.
+
+4. **View in your browser:**
+   - Open `index.html` directly, or use the local server URL.
