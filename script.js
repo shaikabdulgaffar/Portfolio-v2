@@ -590,7 +590,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const mainContent = document.querySelector('.main-content');
 
   function getScrollRoot() {
-    // main-content तभी root बने जब वो सच में scrollable हो
     if (mainContent && (mainContent.scrollHeight - 1) > mainContent.clientHeight) {
       const ov = getComputedStyle(mainContent).overflowY;
       if (ov !== 'visible' && ov !== 'clip') return mainContent;
@@ -615,7 +614,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function bindScrollTarget() {
     const newRoot = getScrollRoot();
     if (boundRoot === newRoot) {
-      // फिर भी स्टेट अपडेट कर दें
       toggleBackToTopBtn();
       return;
     }
