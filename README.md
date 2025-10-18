@@ -42,10 +42,10 @@ This is my personal portfolio website built to showcase my work as a Full Stack 
 ```
 Portfolio-v2/
 │
-├── index.html — Main HTML file
-├── styles.css — Stylesheet with all CSS
-├── script.js — JavaScript for interactivity
-├── README.md — Project documentation
+├── index.html
+├── styles.css
+├── script.js
+├── README.md
 │
-└── attachments/ — Assets folder
+└── attachments/
 ```
