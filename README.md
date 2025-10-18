@@ -39,6 +39,7 @@ This is my personal portfolio website built to showcase my work as a Full Stack 
 
 ## Project Structure
 
+```
 Portfolio-v2/
 │
 ├── index.html — Main HTML file
@@ -47,3 +48,4 @@ Portfolio-v2/
 ├── README.md — Project documentation
 │
 └── attachments/ — Assets folder
+```
